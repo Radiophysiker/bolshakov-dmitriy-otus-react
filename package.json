@@ -12,6 +12,12 @@
     "lint": "eslint --ext .js,.ts src/**/*",
     "test": "jest"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && npm run lint",
+      "pre-push": "npm test && npm run lint"
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -31,7 +37,9 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.3",
     "jest": "^25.2.7",
+    "lint-staged": "^10.1.2",
     "prettier": "^2.0.2",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
