@@ -7,7 +7,6 @@ const config = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
-    publicPath: "./",
   },
   devServer: {
     historyApiFallback: true,
