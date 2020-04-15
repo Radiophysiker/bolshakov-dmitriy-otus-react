@@ -3,32 +3,49 @@
         "jest": true
     },
     "extends": [
-      "airbnb-base",
       "plugin:@typescript-eslint/recommended",
       "prettier/@typescript-eslint",
-      "plugin:prettier/recommended",
       "plugin:import/errors",
       "plugin:import/warnings",
-      "plugin:import/typescript"
+      "plugin:import/typescript",
+      "plugin:prettier/recommended",
+      "plugin:react/recommended"
     ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
     "rules": {
       "import/extensions": [
         "error",
         "ignorePackages",
         {
-          "ts": "never"
+          "ts": "never",
+          "tsx": "never"
         }
      ],
       "import/prefer-default-export": "off",
-      "prettier/prettier": "error"
+      "prettier/prettier": "error",
+      "@typescript-eslint/explicit-function-return-type": 0,
+      "react/prop-types": 0
     },
     "plugins": [
       "@typescript-eslint",
-      "prettier"
+      "prettier",
+      "react"
     ],
     "parserOptions": {
       "sourceType": "module",
       "parser": "babel-eslint",
       "ecmaVersion": 2018
-    }
+    },
+    "overrides": [
+      {
+        "files": ["webpack.config.js"],
+        "rules": {
+          "@typescript-eslint/no-var-requires": ["off"]
+        }
+      }
+    ]
   }
