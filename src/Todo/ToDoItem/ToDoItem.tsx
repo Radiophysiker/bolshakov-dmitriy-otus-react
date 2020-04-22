@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { ToDoItemInterface } from "../Types/items";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
+
 interface ToDoItemProps {
   item: ToDoItemInterface;
   index: number;
@@ -9,6 +10,7 @@ interface ToDoItemProps {
   onClickToDoDelete: (id: string) => void;
   onClickToDoDone: (id: string) => void;
 }
+
 const Button = css`
   padding: 1px 7px;
   min-width: 22px;
@@ -30,8 +32,6 @@ const Item = styled.div`
   display: flex;
   cursor: pointer;
   justify-content: space-between;
-
-}
 `;
 const Label = styled.span`
   line-height: 22px;
@@ -50,6 +50,7 @@ const ButtonImportant = styled.button`
   border-color: #398439;
   margin-right: 8px;
 `;
+
 export const TodoItem: FC<ToDoItemProps> = ({
   item,
   onClickToDoDone,

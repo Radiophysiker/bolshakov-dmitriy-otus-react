@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { ToDoList } from "../ToDoList";
+import { ToDoForm } from "../ToDoForm";
 import styled from "@emotion/styled";
+import { v4 as uuid } from "uuid";
 import { ToDoItemInterface } from "../Types/items";
 interface StateInterface {
   items: Array<ToDoItemInterface>;
@@ -26,6 +28,20 @@ export class ToDo extends Component<{}, StateInterface> {
     ],
   };
 
+  onClickToDoAdd = (label: string) => {
+    this.setState((state: StateInterface) => {
+      const item = this.createItem(label);
+      return { items: [...state.items, item] };
+    });
+  };
+  createItem(label: string) {
+    return {
+      id: uuid(),
+      label,
+      important: false,
+      done: false,
+    };
+  }
   onClickToDoDelete = (id: string) => {
     this.setState((state: StateInterface) => ({
       items: state.items.filter((item: ToDoItemInterface) => item.id !== id),
@@ -68,6 +84,7 @@ export class ToDo extends Component<{}, StateInterface> {
           onClickToDoDelete={this.onClickToDoDelete}
           onClickToDoDone={this.onClickToDoDone}
         />
+        <ToDoForm onClickToDoAdd={this.onClickToDoAdd} />
       </FieldWrapper>
     );
   }
