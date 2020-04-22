@@ -1,5 +1,5 @@
 import React from "react";
 import { render } from "react-dom";
-import HelloWorld from "./HelloWorld";
+import { ToDo } from "./Todo/index";
 
-render(<HelloWorld />, document.getElementById("root"));
+render(<ToDo />, document.getElementById("root"));
