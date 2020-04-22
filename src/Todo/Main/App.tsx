@@ -26,7 +26,13 @@ export class ToDo extends Component<{}, StateInterface> {
     ],
   };
 
-  toggleTodoDone = (id: string) => {
+  onClickToDoDelete = (id: string) => {
+    this.setState((state: StateInterface) => ({
+      items: state.items.filter((item: ToDoItemInterface) => item.id !== id),
+    }));
+  };
+
+  onClickToDoDone = (id: string) => {
     this.setState((state: StateInterface) => ({
       items: state.items.map((todo) =>
         todo.id === id
@@ -39,16 +45,29 @@ export class ToDo extends Component<{}, StateInterface> {
     }));
   };
 
-  onClickTodo = (id: string) => {
-    console.log(id);
-    this.toggleTodoDone(id);
+  onClickToDoImportant = (id: string) => {
+    this.setState((state: StateInterface) => ({
+      items: state.items.map((todo) =>
+        todo.id === id
+          ? {
+              ...todo,
+              important: !todo.important,
+            }
+          : todo,
+      ),
+    }));
   };
 
   public render() {
     const { items } = this.state;
     return (
       <FieldWrapper>
-        <ToDoList items={items} onClickTodo={this.onClickTodo} />
+        <ToDoList
+          items={items}
+          onClickToDoImportant={this.onClickToDoImportant}
+          onClickToDoDelete={this.onClickToDoDelete}
+          onClickToDoDone={this.onClickToDoDone}
+        />
       </FieldWrapper>
     );
   }

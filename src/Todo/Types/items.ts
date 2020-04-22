@@ -7,6 +7,7 @@ export interface ToDoItemInterface {
 
 export interface TodoListInterface {
   items: Array<ToDoItemInterface>;
-  onClickTodo: (id: string) => void;
-  // onClickTodoDelete: (id: string) => () => void;
+  onClickToDoDone: (id: string) => void;
+  onClickToDoImportant: (id: string) => void;
+  onClickToDoDelete: (id: string) => void;
 }

@@ -5,14 +5,21 @@ import styled from "@emotion/styled";
 const Title = styled.h1`
   margin-top: 0;
 `;
-export const ToDoList: FC<TodoListInterface> = ({ items, onClickTodo }) => {
+export const ToDoList: FC<TodoListInterface> = ({
+  items,
+  onClickToDoDone,
+  onClickToDoImportant,
+  onClickToDoDelete,
+}) => {
   const elements = items.map((item: ToDoItemInterface, index: number) => {
     return (
       <TodoItem
         key={item.id}
         index={index}
         item={item}
-        onClickTodo={() => onClickTodo(item.id)}
+        onClickToDoImportant={() => onClickToDoImportant(item.id)}
+        onClickToDoDelete={() => onClickToDoDelete(item.id)}
+        onClickToDoDone={() => onClickToDoDone(item.id)}
       />
     );
   });
