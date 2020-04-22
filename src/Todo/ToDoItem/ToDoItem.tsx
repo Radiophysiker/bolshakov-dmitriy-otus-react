@@ -34,6 +34,7 @@ const Item = styled.div`
 }
 `;
 const Label = styled.span`
+  line-height: 22px;
   font-weight: ${(props: ToDoItemInterface) => props.important && "bold"};
   text-decoration: ${(props: ToDoItemInterface) =>
     props.done && "line-through"};
