@@ -6,6 +6,7 @@ export const ToDoList: FC<TodoListInterface> = ({ items, onClickTodo }) => {
     return (
       <TodoItem
         key={item.id}
+        index={index}
         item={item}
         onClickTodo={() => onClickTodo(item.id)}
       />

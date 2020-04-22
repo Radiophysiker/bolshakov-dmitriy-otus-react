@@ -14,7 +14,6 @@ export class ToDo extends Component<{}, StateInterface> {
   };
 
   toggleTodoDone = (id: string) => {
-    console.log(id);
     this.setState((state: StateInterface) => ({
       items: state.items.map((todo) =>
         todo.id === id
