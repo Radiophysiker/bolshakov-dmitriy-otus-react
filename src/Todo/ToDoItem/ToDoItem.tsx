@@ -24,7 +24,6 @@ const Button = css`
 `;
 const Item = styled.div`
   position: relative;
-  display: block;
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #fff;
@@ -78,3 +77,4 @@ export const TodoItem: FC<ToDoItemProps> = ({
     </Item>
   );
 };
+export default TodoItem;

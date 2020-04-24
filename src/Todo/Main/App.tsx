@@ -47,7 +47,6 @@ export class ToDo extends Component<{}, StateInterface> {
       items: state.items.filter((item: ToDoItemInterface) => item.id !== id),
     }));
   };
-
   onClickToDoDone = (id: string) => {
     this.setState((state: StateInterface) => ({
       items: state.items.map((todo) =>
@@ -60,7 +59,6 @@ export class ToDo extends Component<{}, StateInterface> {
       ),
     }));
   };
-
   onClickToDoImportant = (id: string) => {
     this.setState((state: StateInterface) => ({
       items: state.items.map((todo) =>
