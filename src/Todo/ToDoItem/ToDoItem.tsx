@@ -31,12 +31,12 @@ const Item = styled.div`
   display: flex;
   cursor: pointer;
   justify-content: space-between;
-`;
-const Label = styled.span`
-  line-height: 22px;
-  font-weight: ${(props: ToDoItemInterface) => props.important && "bold"};
-  text-decoration: ${(props: ToDoItemInterface) =>
-    props.done && "line-through"};
+  span {
+    font-weight: ${(props: ToDoItemInterface) =>
+      props.important ? "bold" : "normal"};
+    text-decoration: ${(props: ToDoItemInterface) =>
+      props.done ? "line-through" : "none"};
+  }
 `;
 const ButtonRemove = styled.button`
   ${Button};
@@ -50,7 +50,7 @@ const ButtonImportant = styled.button`
   margin-right: 8px;
 `;
 
-export const TodoItem: FC<ToDoItemProps> = ({
+export const ToDoItem: FC<ToDoItemProps> = ({
   item,
   onClickToDoDone,
   onClickToDoDelete,
@@ -66,10 +66,10 @@ export const TodoItem: FC<ToDoItemProps> = ({
     onClickToDoDelete(item.id);
   };
   return (
-    <Item onClick={() => onClickToDoDone(item.id)}>
-      <Label {...item}>
+    <Item onClick={() => onClickToDoDone(item.id)} {...item}>
+      <span>
         {index + 1}. {item.label}
-      </Label>
+      </span>
       <div>
         <ButtonImportant onClick={handlerClickImportant}>!</ButtonImportant>
         <ButtonRemove onClick={handlerClickRemove}>x</ButtonRemove>
@@ -77,4 +77,4 @@ export const TodoItem: FC<ToDoItemProps> = ({
     </Item>
   );
 };
-export default TodoItem;
+export default ToDoItem;

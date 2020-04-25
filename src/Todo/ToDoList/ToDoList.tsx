@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { TodoItem } from "../ToDoItem";
+import { ToDoItem } from "../ToDoItem";
 import { ToDoItemInterface, TodoListInterface } from "../Types/items";
 import styled from "@emotion/styled";
 const Title = styled.h1`
@@ -13,7 +13,7 @@ export const ToDoList: FC<TodoListInterface> = ({
 }) => {
   const elements = items.map((item: ToDoItemInterface, index: number) => {
     return (
-      <TodoItem
+      <ToDoItem
         key={item.id}
         index={index}
         item={item}
