@@ -8,7 +8,6 @@ export default {
   component: ToDoItem,
   decorators: [withKnobs],
 };
-const item = {};
 export const ToDoItemStory: React.FC<{}> = () => {
   return (
     <ToDoItem

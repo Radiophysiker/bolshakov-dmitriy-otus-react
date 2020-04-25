@@ -1,5 +1,5 @@
 import React from "react";
-import { mount, shallow, ShallowWrapper } from "enzyme";
+import { mount } from "enzyme";
 import { matchers } from "jest-emotion";
 import ToDoItem from "./ToDoItem";
 import renderer from "react-test-renderer";
