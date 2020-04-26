@@ -18,7 +18,7 @@ export const ToDoListStory: React.FC<{}> = () => {
   return (
     <ToDoList
       items={items}
-      onClickToDoDone={action("Отметить задачу важной")}
+      onClickToDoDone={action("Отметить задачу сделанной")}
       onClickToDoImportant={action("Отметить задачу важной")}
       onClickToDoDelete={action("Удалить задачу")}
     />
