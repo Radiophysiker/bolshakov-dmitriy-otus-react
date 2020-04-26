@@ -71,8 +71,12 @@ export const ToDoItem: FC<ToDoItemProps> = ({
         {index + 1}. {item.label}
       </span>
       <div>
-        <ButtonImportant onClick={handlerClickImportant}>!</ButtonImportant>
-        <ButtonRemove onClick={handlerClickRemove}>x</ButtonRemove>
+        <ButtonImportant className="important" onClick={handlerClickImportant}>
+          !
+        </ButtonImportant>
+        <ButtonRemove className="remove" onClick={handlerClickRemove}>
+          x
+        </ButtonRemove>
       </div>
     </Item>
   );

@@ -1,12 +1,12 @@
 import React from "react";
-import { ToDo } from "./App";
+import { ToDoMain } from "./App";
 import { action } from "@storybook/addon-actions";
 import { ToDoList } from "../ToDoList";
 import { ToDoForm } from "../ToDoForm";
 
 export default {
   title: "ToDo",
-  component: ToDo,
+  component: ToDoMain,
 };
 
 export const ToDoStory: React.FC<{}> = () => {

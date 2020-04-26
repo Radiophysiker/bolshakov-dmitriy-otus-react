@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { ToDoList } from "../ToDoList";
 import { ToDoForm } from "../ToDoForm";
 import styled from "@emotion/styled";
-import { v4 as uuid } from "uuid";
 import { ToDoItemInterface } from "../Types/items";
-interface StateInterface {
+export interface StateInterface {
   items: Array<ToDoItemInterface>;
 }
 const FieldWrapper = styled.div`
@@ -18,8 +17,8 @@ const FieldWrapper = styled.div`
   border-radius: 4px;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 `;
-
-export class ToDo extends Component<{}, StateInterface> {
+let id = 100;
+export class ToDoMain extends Component<{}, StateInterface> {
   state: StateInterface = {
     items: [
       { id: "sd1", label: "Drink Coffee", important: false, done: false },
@@ -35,8 +34,9 @@ export class ToDo extends Component<{}, StateInterface> {
     });
   };
   createItem(label: string) {
+    id++;
     return {
-      id: uuid(),
+      id: "id" + id,
       label,
       important: false,
       done: false,

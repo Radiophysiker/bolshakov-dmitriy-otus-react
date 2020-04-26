@@ -46,17 +46,17 @@ export class ToDoForm extends Component<PropsInterface, StateInterface> {
     label: "",
   };
 
-  onLabelChange = (event: React.FormEvent<HTMLInputElement>) => {
+  onLabelChange = (event: unknown) => {
+    const e = event as React.FormEvent<HTMLInputElement>;
     this.setState({
-      label: event.currentTarget.value,
+      label: e.currentTarget.value,
     });
   };
   onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log(event);
     event.preventDefault();
     const { label } = this.state;
-    this.setState({ label: "" });
     this.props.onClickToDoAdd(label);
+    this.setState({ label: "" });
   };
 
   public render() {
@@ -64,11 +64,12 @@ export class ToDoForm extends Component<PropsInterface, StateInterface> {
       <Form onSubmit={this.onSubmit}>
         <input
           type="text"
+          id="newTask"
           onChange={this.onLabelChange}
           value={this.state.label}
           placeholder="What needs to be done?"
         />
-        <button disabled={!this.state.label} type="submit">
+        <button id="addNewTask" disabled={!this.state.label} type="submit">
           Add
         </button>
       </Form>
