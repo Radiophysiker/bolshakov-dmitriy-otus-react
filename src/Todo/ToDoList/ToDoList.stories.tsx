@@ -1,12 +1,6 @@
 import React from "react";
 import { ToDoList } from "./ToDoList";
-import {
-  withKnobs,
-  array,
-  text,
-  object,
-  boolean,
-} from "@storybook/addon-knobs";
+import { withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 
 export default {
