@@ -1,15 +1,37 @@
 import React, { FC } from "react";
 import { ToDoItemInterface } from "../Types/items";
-import { css } from "@emotion/core";
+import { css, keyframes } from "@emotion/core";
 import styled from "@emotion/styled";
-
+interface LocalItem extends ToDoItemInterface {
+  className?: string;
+}
 interface ToDoItemProps {
-  item: ToDoItemInterface;
+  item: LocalItem;
   index: number;
   onClickToDoImportant: (id: string) => void;
   onClickToDoDelete: (id: string) => void;
   onClickToDoDone: (id: string) => void;
 }
+
+const removeAnimation = keyframes`
+  from {
+    transform: scaleY(1);
+  }
+  40% {
+    transform: scaleY(0.8);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+`;
+const addAnimation = keyframes`
+  from {
+    transform: scaleY(0.5) translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+`;
 
 const Button = css`
   padding: 1px 7px;
@@ -23,6 +45,7 @@ const Button = css`
   border: 1px solid transparent;
 `;
 const Item = styled.div`
+  transition: height 1s;
   position: relative;
   padding: 10px 15px;
   margin-bottom: -1px;
@@ -31,11 +54,20 @@ const Item = styled.div`
   display: flex;
   cursor: pointer;
   justify-content: space-between;
+
   span {
     font-weight: ${(props: ToDoItemInterface) =>
       props.important ? "bold" : "normal"};
     text-decoration: ${(props: ToDoItemInterface) =>
       props.done ? "line-through" : "none"};
+  }
+  &.add {
+    animation: ${addAnimation} 1s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+  &.remove {
+    animation: ${removeAnimation} 1s ease-in-out;
+    animation-fill-mode: forwards;
   }
 `;
 const ButtonRemove = styled.button`
@@ -66,15 +98,27 @@ export const ToDoItem: FC<ToDoItemProps> = ({
     onClickToDoDelete(item.id);
   };
   return (
-    <Item onClick={() => onClickToDoDone(item.id)} {...item}>
+    <Item
+      className={item.className}
+      onClick={() => onClickToDoDone(item.id)}
+      {...item}
+    >
       <span>
         {index + 1}. {item.label}
       </span>
       <div>
-        <ButtonImportant className="important" onClick={handlerClickImportant}>
+        <ButtonImportant
+          id="importantTask"
+          className="important"
+          onClick={handlerClickImportant}
+        >
           !
         </ButtonImportant>
-        <ButtonRemove className="remove" onClick={handlerClickRemove}>
+        <ButtonRemove
+          id="removeTask"
+          className="remove"
+          onClick={handlerClickRemove}
+        >
           x
         </ButtonRemove>
       </div>
